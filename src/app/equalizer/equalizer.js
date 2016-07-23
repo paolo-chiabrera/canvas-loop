@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import Paper, {Color, Group, Path, Point, Project, Rectangle, Size} from 'paper';
+import Paper, {Color, Group, Path} from 'paper';
 
 export class Equalizer extends Component {
 
@@ -58,11 +58,11 @@ export class Equalizer extends Component {
     const rows = Math.ceil(height / this.state.size);
 
     this.setState({
-      cols: cols,
-      rows: rows,
+      cols,
+      rows,
       canvas: {
-        width: width,
-        height: height
+        width,
+        height
       }
     });
 
@@ -82,10 +82,10 @@ export class Equalizer extends Component {
 
     const rowIndex = r % this.colours.length;
 
-    if(colIndex % 2 == 0){
-      return (rowIndex % 2 == 0) ? 0 : 3;
+    if(colIndex % 2 === 0){
+      return (rowIndex % 2 === 0) ? 0 : 3;
     } else{
-      return (rowIndex % 2 == 0) ? 1 : 2;
+      return (rowIndex % 2 === 0) ? 1 : 2;
     }
   }
 
@@ -99,8 +99,8 @@ export class Equalizer extends Component {
     const y = r * size;
 
     const rect = new Path.Rectangle({
-      x: x,
-      y: y,
+      x,
+      y,
       width: size,
       height: size
     });
@@ -159,9 +159,9 @@ export class Equalizer extends Component {
 
     const delta = count % this.fps;
 
-    const flag =  Math.floor(count / this.fps) % 2 == 0;
+    const flag =  Math.floor(count / this.fps) % 2 === 0;
 
-    const bottomReached = delta == 0 && flag && count > 0;
+    const bottomReached = delta === 0 && flag && count > 0;
 
     const sign = (flag) ? 1.0 : -1.0;
 
